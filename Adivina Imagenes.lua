@@ -40,6 +40,7 @@ copyButton.Parent = frame
 
 --// Variables de detección
 local closestModel = nil
+local scriptEnabled = true
 
 --// Función para copiar al portapapeles
 local function copyToClipboard(text)
@@ -104,9 +105,29 @@ end)
 
 --// Tecla Q para copiar
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.Q then
-        if closestModel then
-            copyToClipboard(closestModel.Name)
+    if not gameProcessed then
+        if input.KeyCode == Enum.KeyCode.Q then
+            if closestModel then
+                copyToClipboard(closestModel.Name)
+            end
+        elseif input.KeyCode == Enum.KeyCode.M then
+            scriptEnabled = false
+            frame.Visible = false  -- Ocultar la interfaz si se desactiva el script
+
+            -- Enviar notificación de que el script se ha cerrado
+            local notification = Instance.new("TextLabel")
+            notification.Size = UDim2.new(0, 300, 0, 50)
+            notification.Position = UDim2.new(0.5, -150, 0.85, 0)
+            notification.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+            notification.TextColor3 = Color3.new(1, 1, 1)
+            notification.Text = "El script se ha cerrado."
+            notification.TextScaled = true
+            notification.Font = Enum.Font.GothamBold
+            notification.Parent = screenGui
+
+            -- Eliminar la notificación después de 5 segundos
+            task.wait(5)
+            notification:Destroy()
         end
     end
 end)
@@ -114,14 +135,17 @@ end)
 --// Loop principal
 task.spawn(function()
     while task.wait(0.2) do
-        closestModel = findClosestModel()
+        if scriptEnabled then  -- Solo buscar modelos si el script está habilitado
+            closestModel = findClosestModel()
 
-        if closestModel then
-            modelNameLabel.Text = closestModel.Name
-            frame.Visible = true
-            --print("Detectado: "..closestModel.Name)
-        else
-            frame.Visible = false
+            if closestModel then
+                modelNameLabel.Text = closestModel.Name
+                frame.Visible = true
+                -- Copiar automáticamente si estás cerca del modelo
+                copyToClipboard(closestModel.Name)
+            else
+                frame.Visible = false
+            end
         end
     end
 end)

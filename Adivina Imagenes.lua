@@ -1,12 +1,10 @@
---// Variables
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 local floorsFolder = workspace:WaitForChild("Map"):WaitForChild("Floors")
-local proximityDistance = 25 -- distancia de detección
+local proximityDistance = 25
 
---// Crear GUI
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ModelDetectorGui"
 screenGui.Parent = player:WaitForChild("PlayerGui")
@@ -38,18 +36,15 @@ copyButton.Font = Enum.Font.Gotham
 copyButton.Text = "Copiar Nombre (o pulsa Q)"
 copyButton.Parent = frame
 
---// Variables de detección
 local closestModel = nil
 local scriptEnabled = true
 
---// Función para copiar al portapapeles
 local function copyToClipboard(text)
     if setclipboard then
         setclipboard(text)
     end
 end
 
---// Función para buscar el modelo más cercano correctamente
 local function findClosestModel()
     local nearest = nil
     local nearestDistance = proximityDistance
@@ -96,14 +91,12 @@ local function findClosestModel()
     return nearest
 end
 
---// Botón de copiar
 copyButton.MouseButton1Click:Connect(function()
     if closestModel then
         copyToClipboard(closestModel.Name)
     end
 end)
 
---// Tecla Q para copiar
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed then
         if input.KeyCode == Enum.KeyCode.Q then
@@ -112,9 +105,8 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, gameProce
             end
         elseif input.KeyCode == Enum.KeyCode.M then
             scriptEnabled = false
-            frame.Visible = false  -- Ocultar la interfaz si se desactiva el script
+            frame.Visible = false
 
-            -- Enviar notificación de que el script se ha cerrado
             local notification = Instance.new("TextLabel")
             notification.Size = UDim2.new(0, 300, 0, 50)
             notification.Position = UDim2.new(0.5, -150, 0.85, 0)
@@ -125,23 +117,21 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, gameProce
             notification.Font = Enum.Font.GothamBold
             notification.Parent = screenGui
 
-            -- Eliminar la notificación después de 5 segundos
             task.wait(5)
             notification:Destroy()
         end
     end
 end)
 
---// Loop principal
 task.spawn(function()
     while task.wait(0.2) do
-        if scriptEnabled then  -- Solo buscar modelos si el script está habilitado
+        if scriptEnabled then
             closestModel = findClosestModel()
 
             if closestModel then
                 modelNameLabel.Text = closestModel.Name
                 frame.Visible = true
-                -- Copiar automáticamente si estás cerca del modelo
+                    
                 copyToClipboard(closestModel.Name)
             else
                 frame.Visible = false

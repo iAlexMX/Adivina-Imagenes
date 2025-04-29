@@ -10,14 +10,14 @@ screenGui.Name = "ModelDetectorGui"
 screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 300, 0, 100)
+frame.Size = UDim2.new(0, 300, 0, 120)
 frame.Position = UDim2.new(0.5, -150, 0.85, 0)
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.Visible = false
 frame.Parent = screenGui
 
 local modelNameLabel = Instance.new("TextLabel")
-modelNameLabel.Size = UDim2.new(1, 0, 0.6, 0)
+modelNameLabel.Size = UDim2.new(1, 0, 0.5, 0)
 modelNameLabel.Position = UDim2.new(0, 0, 0, 0)
 modelNameLabel.BackgroundTransparency = 1
 modelNameLabel.TextColor3 = Color3.new(1, 1, 1)
@@ -27,14 +27,25 @@ modelNameLabel.Text = ""
 modelNameLabel.Parent = frame
 
 local copyButton = Instance.new("TextButton")
-copyButton.Size = UDim2.new(1, 0, 0.4, 0)
-copyButton.Position = UDim2.new(0, 0, 0.6, 0)
+copyButton.Size = UDim2.new(1, 0, 0.3, 0)
+copyButton.Position = UDim2.new(0, 0, 0.5, 0)
 copyButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 copyButton.TextColor3 = Color3.new(1, 1, 1)
 copyButton.TextScaled = true
 copyButton.Font = Enum.Font.Gotham
 copyButton.Text = "Copiar Nombre (o pulsa Q)"
 copyButton.Parent = frame
+
+local creditLabel = Instance.new("TextLabel")
+creditLabel.Size = UDim2.new(1, 0, 0.2, 0)
+creditLabel.Position = UDim2.new(0, 0, 0.8, 0)
+creditLabel.BackgroundTransparency = 100
+creditLabel.TextColor3 = Color3.new(1, 1, 1)
+creditLabel.TextScaled = true
+creditLabel.Font = Enum.Font.GothamSemibold
+creditLabel.Text = "by iAlexMX"
+creditLabel.TextSize = 12
+creditLabel.Parent = frame
 
 local closestModel = nil
 local scriptEnabled = true

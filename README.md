@@ -43,7 +43,7 @@ Inspirado en el estilo de *Tower of Guessing*, este script te proporciona una in
 
 ## 🎮 Link del juego
 
-<pre>https://www.roblox.com/es/games/9306257030/Guess-It-Images</pre>
+https://www.roblox.com/es/games/9306257030/Guess-It-Images
 
 
 ---

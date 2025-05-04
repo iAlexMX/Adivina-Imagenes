@@ -1,4 +1,4 @@
-# 🖼️ Adivina Imágenes – Script Automático
+# 🖼️ Adivina: Imágenes – Script Automático
 
 Un práctico script diseñado específicamente para el juego **“Adivina Imágenes”** en Roblox. Automatiza la detección del nombre del modelo más cercano, facilitando el juego sin esfuerzo manual.
 
@@ -38,6 +38,13 @@ Inspirado en el estilo de *Tower of Guessing*, este script te proporciona una in
 1. Ejecuta el script dentro del juego **“Adivina Imágenes”**.
 2. La interfaz mostrará automáticamente el nombre detectado.
 3. Usa `Q` para copiarlo rápidamente o `M` para cerrar todo cuando termines.
+
+---
+
+## 🎮 Link del juego
+
+<pre>https://www.roblox.com/es/games/9306257030/Guess-It-Images</pre>
+
 
 ---
 

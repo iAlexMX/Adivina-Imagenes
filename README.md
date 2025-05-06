@@ -50,5 +50,5 @@ https://www.roblox.com/es/games/9306257030/Guess-It-Images
 
 ## 🧑‍💻 Autor
 
-Desarrollado por **iAlexMX**  
+Desarrollado por **AlexScriptX**  
 💡 Ideal para quienes desean agilizar partidas sin escribir manualmente cada respuesta.

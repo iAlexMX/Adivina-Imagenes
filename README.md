@@ -4,7 +4,7 @@ Un práctico script diseñado específicamente para el juego **“Adivina Imáge
 
 Inspirado en el estilo de *Tower of Guessing*, este script te proporciona una interfaz intuitiva y controles rápidos para mejorar tu experiencia.
 
-<pre>https://raw.githubusercontent.com/iAlexMX/Adivina-Imagenes/refs/heads/main/Adivina%20Imagenes%20by%20AlexScriptX.lua</pre>
+<pre>loadstring(game:HttpGet("https://raw.githubusercontent.com/iAlexMX/Adivina-Imagenes/refs/heads/main/Adivina%20Imagenes%20by%20AlexScriptX.lua"))()</pre>
 
 ---
 
